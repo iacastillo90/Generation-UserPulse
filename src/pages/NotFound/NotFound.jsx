@@ -1,9 +1,17 @@
-import "./NotFound.css";
+import { Button, Container } from "react-bootstrap";
 
-function NotFound () {
+import { Link } from "react-router-dom";
 
-    return(
-        <h1>404 - Not Found</h1>
+function NotFound() {
+    return (
+        <Container className="text-center mt-5">
+            <h1 className="display-1">404</h1>
+            <p className="lead">Página no encontrada</p>
+            
+            <Link to="/">
+                <Button variant="primary">Volver al inicio</Button>
+            </Link>
+        </Container>
     );
 }
 
