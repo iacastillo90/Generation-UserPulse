@@ -1,0 +1,88 @@
+/* Pagination.css */
+
+.custom-pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 2.5rem 0 0.5rem;
+    font-family: 'DM Sans', sans-serif;
+}
+
+/* ── Botón base ── */
+.page-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 38px;
+    height: 38px;
+    padding: 0 6px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color, #e5e7eb);
+    background: var(--bg-surface, #ffffff);
+    color: var(--text-secondary, #6b7280);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    user-select: none;
+}
+
+.page-btn:hover:not(:disabled):not(.active) {
+    background: rgba(29, 158, 117, 0.06);
+    border-color: rgba(29, 158, 117, 0.3);
+    color: #1D9E75;
+}
+
+/* ── Página activa ── */
+.page-btn.active {
+    background: #1D9E75;
+    border-color: #1D9E75;
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(29, 158, 117, 0.35);
+    transform: translateY(-1px);
+    cursor: default;
+}
+
+/* ── Botones prev / next ── */
+.page-nav svg {
+    width: 16px;
+    height: 16px;
+}
+
+.page-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* ── Elipsis ── */
+.page-ellipsis {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 30px;
+    height: 38px;
+    font-size: 0.85rem;
+    color: var(--text-secondary, #9ca3af);
+    letter-spacing: 0.05em;
+    pointer-events: none;
+}
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+    .page-btn {
+        background: #1a1d22;
+        border-color: rgba(255, 255, 255, 0.08);
+        color: #9ca3af;
+    }
+
+    .page-btn:hover:not(:disabled):not(.active) {
+        background: rgba(29, 158, 117, 0.1);
+        border-color: rgba(29, 158, 117, 0.35);
+        color: #1D9E75;
+    }
+
+    .page-ellipsis { color: #6b7280; }
+}

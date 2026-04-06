@@ -1,0 +1,21 @@
+/* MainLayout.css
+   Decisión clave: .app-shell usa flex-column + min-height 100dvh para que el footer
+   quede siempre al fondo. .main-content recibe flex:1 para ocupar el espacio sobrante.
+   Sin padding aquí — cada página gestiona el suyo vía su propia clase wrapper.
+*/
+
+.app-shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+    background-color: var(--bg-primary, #fafbfc);
+}
+
+.main-content {
+    flex: 1;
+    /* Sin padding ni container — cada página tiene su propio .ud-page / .users-page / etc. */
+}
+
+@media (prefers-color-scheme: dark) {
+    .app-shell { background-color: #0f1115; }
+}

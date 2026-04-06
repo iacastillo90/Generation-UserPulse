@@ -1,0 +1,210 @@
+/* Footer.css */
+
+/* ── Wrapper ── */
+.main-footer {
+    background-color: var(--bg-surface, #ffffff);
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    margin-top: auto;
+    font-family: 'DM Sans', sans-serif;
+}
+
+@media (prefers-color-scheme: dark) {
+    .main-footer {
+        background-color: #111318;
+        border-top-color: rgba(255, 255, 255, 0.05);
+    }
+}
+
+/* ── Cuerpo ── */
+.footer-body {
+    padding: 3rem 0 2.5rem;
+}
+
+/* ── Brand ── */
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.85rem;
+}
+
+.footer-brand-icon {
+    width: 28px;
+    height: 28px;
+    background: linear-gradient(135deg, #1D9E75, #0e6649);
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.footer-brand-icon svg { width: 15px; height: 15px; }
+
+.footer-brand-name {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    color: var(--text-primary, #111827);
+}
+
+@media (prefers-color-scheme: dark) {
+    .footer-brand-name { color: #f3f4f6; }
+}
+
+.footer-tagline {
+    font-size: 0.84rem;
+    line-height: 1.6;
+    color: var(--text-secondary, #6b7280);
+    margin-bottom: 1rem;
+    max-width: 280px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .footer-tagline { color: #6b7280; }
+}
+
+/* ── Badge API ── */
+.footer-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #1D9E75;
+    background: rgba(29, 158, 117, 0.08);
+    border: 1px solid rgba(29, 158, 117, 0.18);
+    border-radius: 50px;
+    padding: 4px 12px;
+}
+
+.footer-badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #1D9E75;
+    animation: dot-pulse 2.5s infinite;
+}
+
+@keyframes dot-pulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.35; }
+}
+
+/* ── Columnas ── */
+.footer-col-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-secondary, #9ca3af);
+    margin-bottom: 1rem;
+}
+
+/* ── Nav links ── */
+.footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.footer-link {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary, #6b7280);
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.footer-link:hover {
+    color: #1D9E75;
+    transform: translateX(3px);
+}
+
+.footer-link--active {
+    color: #1D9E75;
+    font-weight: 600;
+}
+
+@media (prefers-color-scheme: dark) {
+    .footer-link { color: #6b7280; }
+    .footer-link:hover { color: #1D9E75; }
+    .footer-link--active { color: #1D9E75; }
+}
+
+/* ── Stack pills ── */
+.footer-stack-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-stack-item {
+    font-size: 0.84rem;
+    color: var(--text-secondary, #6b7280);
+    padding-left: 0;
+    position: relative;
+    padding-left: 14px;
+}
+
+.footer-stack-item::before {
+    content: '·';
+    position: absolute;
+    left: 2px;
+    color: #1D9E75;
+    font-weight: 700;
+}
+
+@media (prefers-color-scheme: dark) {
+    .footer-stack-item { color: #6b7280; }
+}
+
+/* ── Franja copyright ── */
+.footer-bottom {
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 1.1rem 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    .footer-bottom { border-top-color: rgba(255, 255, 255, 0.05); }
+}
+
+.footer-bottom-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.footer-copy,
+.footer-made {
+    font-size: 0.78rem;
+    color: var(--text-secondary, #9ca3af);
+}
+
+.footer-made {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.footer-heart {
+    width: 13px;
+    height: 13px;
+    color: #e11d48;
+    animation: heartbeat 1.8s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1);    }
+    14%       { transform: scale(1.25); }
+    28%       { transform: scale(1);    }
+    42%       { transform: scale(1.18); }
+    56%       { transform: scale(1);    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .footer-copy, .footer-made { color: #4b5563; }
+}

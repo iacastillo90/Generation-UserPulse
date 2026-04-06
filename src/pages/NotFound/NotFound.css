@@ -1,0 +1,138 @@
+/* NotFound.css
+   Decisión clave: el "404" usa font-size con clamp() + text-shadow en accent color para
+   crear profundidad sin imágenes. La ilustración SVG geométrica se dibuja solo con CSS
+   (un círculo + líneas radiales pulsantes) como fondo decorativo, sin assets externos.
+*/
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0);    }
+}
+
+@keyframes floatGeo {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50%       { transform: translateY(-12px) rotate(3deg); }
+}
+
+@keyframes ringPulse {
+    0%   { transform: scale(1);   opacity: 0.08; }
+    50%  { transform: scale(1.07); opacity: 0.15; }
+    100% { transform: scale(1);   opacity: 0.08; }
+}
+
+/* ── Wrapper ── */
+.not-found-page {
+    min-height: calc(100vh - 120px);
+    padding: 3rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--bg-primary, #fafbfc);
+}
+
+@media (prefers-color-scheme: dark) {
+    .not-found-page { background-color: #0f1115; }
+}
+
+/* ── Decoración geométrica de fondo ── */
+.not-found-page::before,
+.not-found-page::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.not-found-page::before {
+    width: 480px;
+    height: 480px;
+    border: 1.5px solid rgba(29, 158, 117, 0.1);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ringPulse 4s ease-in-out infinite;
+}
+
+.not-found-page::after {
+    width: 680px;
+    height: 680px;
+    border: 1px solid rgba(29, 158, 117, 0.05);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ringPulse 4s ease-in-out infinite 0.8s;
+}
+
+/* ── Animación de entrada ── */
+.animated-fadeInUp { animation: fadeInUp 0.7s ease-out both; }
+
+/* ── Número 404 ── */
+.error-code {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 800;
+    font-size: clamp(7rem, 20vw, 13rem);
+    line-height: 1;
+    letter-spacing: -0.05em;
+    color: #1D9E75;
+    text-shadow:
+        0 0  30px rgba(29, 158, 117, 0.25),
+        0 10px 50px rgba(29, 158, 117, 0.12);
+    position: relative;
+    z-index: 1;
+    animation: floatGeo 5s ease-in-out infinite;
+    user-select: none;
+}
+
+/* ── Título ── */
+.error-title {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 700;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    letter-spacing: -0.025em;
+    color: var(--text-primary, #111827);
+    position: relative;
+    z-index: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+    .error-title { color: #f3f4f6; }
+}
+
+/* ── Descripción ── */
+.error-description {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.05rem;
+    line-height: 1.65;
+    max-width: 460px;
+    color: var(--text-secondary, #6b7280) !important;
+    position: relative;
+    z-index: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+    .error-description { color: #9ca3af !important; }
+}
+
+/* ── CTA Button ── */
+.btn-glow.btn-primary {
+    background-color: #1D9E75;
+    border-color: #1D9E75;
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.btn-glow.btn-primary:hover,
+.btn-glow.btn-primary:focus {
+    background-color: #16825f;
+    border-color: #16825f;
+    color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(29, 158, 117, 0.2), 0 6px 20px rgba(29, 158, 117, 0.3);
+    transform: translateY(-2px);
+}

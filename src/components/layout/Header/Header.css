@@ -1,0 +1,70 @@
+/* Header.css */
+
+.main-header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(18px) saturate(180%);
+    -webkit-backdrop-filter: blur(18px) saturate(180%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 0 1px 12px rgba(0, 0, 0, 0.04);
+}
+
+@media (prefers-color-scheme: dark) {
+    .main-header {
+        background: rgba(12, 14, 18, 0.92);
+        border-bottom-color: rgba(255, 255, 255, 0.06);
+    }
+}
+
+/* ── Contenedor principal del header ── */
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 62px;
+}
+
+/* ── Brand ── */
+.brand-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    flex-shrink: 0;
+    z-index: 2;
+}
+
+.brand-icon {
+    width: 30px;
+    height: 30px;
+    background: linear-gradient(135deg, #1D9E75 0%, #0e6649 100%);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(29, 158, 117, 0.3);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    flex-shrink: 0;
+}
+
+.brand-icon svg { width: 16px; height: 16px; }
+
+.brand-link:hover .brand-icon {
+    transform: scale(1.08);
+    box-shadow: 0 4px 14px rgba(29, 158, 117, 0.45);
+}
+
+.brand-name {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--text-primary, #111827);
+    line-height: 1;
+}
+
+@media (prefers-color-scheme: dark) {
+    .brand-name { color: #f3f4f6; }
+}

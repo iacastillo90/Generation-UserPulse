@@ -1,0 +1,253 @@
+/* MyNavbar.css */
+
+/* ── Navbar wrapper (siempre transparente) ── */
+.custom-navbar {
+    background: transparent !important;
+}
+
+/* ── Panel contenedor — el glassmorphism se aplica aquí ──
+   En desktop: invisible (solo es un contenedor flex)
+   En mobile: se convierte en el dropdown card glassmorphism
+*/
+.nav-collapse-panel {
+    display: flex;
+    align-items: center;
+}
+
+/* ── DESKTOP (≥ 992px): layout en fila ── */
+@media (min-width: 992px) {
+    .nav-links-group {
+        display: flex !important;
+        flex-direction: row;
+        align-items: center;
+        gap: 2px;
+        flex-wrap: nowrap;
+    }
+
+    .nav-separator {
+        display: block;
+        width: 1px;
+        height: 16px;
+        background: rgba(0, 0, 0, 0.1);
+        margin: 0 4px;
+        flex-shrink: 0;
+        align-self: center;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .nav-separator { background: rgba(255, 255, 255, 0.1); }
+    }
+}
+
+/* ── MOBILE / TABLET (< 992px): panel dropdown glassmorphism ── */
+@media (max-width: 991.98px) {
+    /* Navbar wrapper requiere flex-basis 100% en mobile para el collapse */
+    .custom-navbar {
+        flex-basis: 100%;
+    }
+
+    /* El Navbar.Collapse de Bootstrap hace show/hide automático.
+       Dentro del collapse, el panel recibe estilos de card */
+    .navbar-collapse {
+        margin-top: 0.5rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .navbar-collapse.show .nav-collapse-panel,
+    .navbar-collapse.collapsing .nav-collapse-panel {
+        background: rgba(255, 255, 255, 0.97);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border: 1px solid rgba(0, 0, 0, 0.07);
+        border-radius: 14px;
+        padding: 0.6rem;
+        box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+        width: 100%;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .navbar-collapse.show .nav-collapse-panel,
+        .navbar-collapse.collapsing .nav-collapse-panel {
+            background: rgba(18, 20, 26, 0.98);
+            border-color: rgba(255, 255, 255, 0.07);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+        }
+    }
+
+    .nav-collapse-panel {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .nav-links-group {
+        flex-direction: column !important;
+        width: 100%;
+        gap: 2px !important;
+    }
+
+    /* Ocultar separadores en mobile */
+    .nav-separator { display: none !important; }
+
+    .nav-item-custom,
+    .nav-item-cta {
+        width: 100%;
+        text-align: left;
+        border-radius: 10px !important;
+        padding: 11px 14px !important;
+        font-size: 0.95rem !important;
+    }
+
+    .nav-item-cta {
+        justify-content: space-between !important;
+        margin-top: 2px;
+    }
+}
+
+/* ── Link base ── */
+.nav-item-custom {
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 0.88rem !important;
+    font-weight: 500 !important;
+    color: var(--text-secondary, #6b7280) !important;
+    padding: 6px 12px !important;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: color 0.2s ease, background 0.2s ease;
+    position: relative;
+    white-space: nowrap;
+    display: block;
+}
+
+/* Underline animado — solo desktop */
+@media (min-width: 992px) {
+    .nav-item-custom::after {
+        content: '';
+        position: absolute;
+        bottom: 2px;
+        left: 12px;
+        right: 12px;
+        height: 2px;
+        background: #1D9E75;
+        border-radius: 2px;
+        transform: scaleX(0);
+        transform-origin: center;
+        transition: transform 0.22s ease;
+    }
+
+    .nav-item-custom:hover::after,
+    .nav-item-custom.active::after { transform: scaleX(1); }
+}
+
+.nav-item-custom:hover {
+    color: #1D9E75 !important;
+    background: rgba(29, 158, 117, 0.06);
+}
+
+.nav-item-custom.active {
+    color: #1D9E75 !important;
+    font-weight: 600 !important;
+}
+
+/* ── CTA pill "Usuarios →" ── */
+.nav-item-cta {
+    display: inline-flex !important;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Sans', sans-serif !important;
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    color: #1D9E75 !important;
+    background: rgba(29, 158, 117, 0.08) !important;
+    border: 1px solid rgba(29, 158, 117, 0.2) !important;
+    border-radius: 50px !important;
+    padding: 6px 16px !important;
+    text-decoration: none;
+    transition: all 0.22s ease;
+    white-space: nowrap;
+}
+
+.nav-item-cta:hover {
+    background: #1D9E75 !important;
+    color: #ffffff !important;
+    border-color: #1D9E75 !important;
+    box-shadow: 0 4px 14px rgba(29, 158, 117, 0.3);
+    transform: translateY(-1px);
+}
+
+.nav-item-cta.active {
+    background: #1D9E75 !important;
+    color: #ffffff !important;
+    border-color: #1D9E75 !important;
+}
+
+.cta-arrow {
+    width: 12px;
+    height: 12px;
+    transition: transform 0.2s ease;
+    flex-shrink: 0;
+}
+
+.nav-item-cta:hover .cta-arrow { transform: translateX(3px); }
+
+/* ── Hamburger (3 barras custom) ── */
+.custom-toggle {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    padding: 0 !important;
+    border-radius: 50% !important; /* Botón circular premium */
+    background: transparent !important; /* Sin caja gris por defecto */
+    transition: background 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+    /* Ajuste de alineación para que encaje perfecto a la derecha */
+    margin-right: -4px;
+}
+
+.custom-toggle:hover {
+    background: rgba(29, 158, 117, 0.08) !important;
+    transform: scale(1.05);
+}
+
+.custom-toggle:focus {
+    box-shadow: 0 0 0 2px rgba(29, 158, 117, 0.2) !important;
+}
+
+/* Ocultar icono default de Bootstrap */
+.custom-toggle .navbar-toggler-icon { display: none !important; }
+
+.toggle-bar {
+    width: 18px;
+    height: 2px;
+    background: var(--text-primary, #111827);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease, width 0.3s ease;
+    display: block;
+    transform-origin: center;
+}
+
+/* Estado ABIERTO: toggle no tiene .collapsed */
+.custom-toggle:not(.collapsed) .toggle-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+    background: #1D9E75;
+}
+.custom-toggle:not(.collapsed) .toggle-bar:nth-child(2) {
+    opacity: 0;
+    width: 0;
+}
+.custom-toggle:not(.collapsed) .toggle-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+    background: #1D9E75;
+}
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+    .toggle-bar { background: #f3f4f6; }
+    
+    .nav-item-custom { color: #9ca3af !important; }
+    .nav-item-custom:hover  { color: #1D9E75 !important; }
+    .nav-item-custom.active { color: #1D9E75 !important; }
+}

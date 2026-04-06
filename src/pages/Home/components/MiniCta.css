@@ -1,0 +1,47 @@
+/* MiniCta.css */
+.mini-cta-wrapper {
+  background-color: var(--bg-primary, #ffffff);
+}
+
+.mini-cta-box {
+  background-color: var(--bg-surface, #ffffff);
+  border-radius: 16px;
+  border: 1px solid var(--border-color, #f3f4f6);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+.cta-content h4 {
+  font-family: 'DM Sans', sans-serif;
+  color: var(--text-primary, #111827);
+  letter-spacing: -0.01em;
+}
+
+.cta-content p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+}
+
+.cta-btn {
+  background-color: #1D9E75;
+  border-color: #1D9E75;
+  transition: all 0.3s ease;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.cta-btn:hover {
+  background-color: #16825f;
+  border-color: #16825f;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(29, 158, 117, 0.3) !important;
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+  .mini-cta-wrapper { background-color: var(--bg-dark-primary, #0f1115); }
+  .mini-cta-box {
+    background-color: var(--bg-dark-surface, #1e1e24);
+    border-color: rgba(255, 255, 255, 0.05);
+  }
+  .cta-content h4 { color: #f9fafb; }
+  .cta-content p { color: #9ca3af !important; }
+}

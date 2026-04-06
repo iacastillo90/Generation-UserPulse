@@ -1,0 +1,11 @@
+/* Home.css — wrapper de la página */
+
+.home-page {
+    /* Fondo neutro frío coherente con la paleta */
+    background-color: var(--bg-primary, #fafbfc);
+    min-height: 100vh;
+}
+
+@media (prefers-color-scheme: dark) {
+    .home-page { background-color: #0c0e12; }
+}
